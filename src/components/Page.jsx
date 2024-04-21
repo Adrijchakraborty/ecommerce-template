@@ -1,36 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { GlobalContext } from './context/Context'
+import { GlobalContext } from '../context/Context'
 
 export const Page = () => {
-    const [data, setData] = useState([])
     const [page, setPage] = useState(1)
-    const [current, setCurrent] = useState(8)
-    const [loading, setLoading] = useState(false);
+    const [current, setCurrent] = useState(9)
 
-    useEffect(() => {
-        Fetch();
-    }, [])
-
-    const Fetch = async () => {
-        setLoading(true);
-        const res = await fetch("https://dummyjson.com/products");
-        const data = await res.json();
-        if (!data.error) {
-            setLoading(false);
-        }
-        setData(data.products);
-    }
-    //console.log(data);
+    const {items,addItems,data,newItems,loading} = useContext(GlobalContext);
 
     const lastPage = current * page;
     const firstPage = lastPage - current;
 
-    const newData = data.slice(firstPage, lastPage)
+    let newData;
 
-    // console.log(newData);
-    // console.log(page)
-
-    const {items,addItems} = useContext(GlobalContext);
+    if(newItems.length>0){
+        newData = newItems.slice(firstPage, lastPage);
+    }
+    else{
+        newData = data.slice(firstPage, lastPage);
+    }
 
     return (
         <div>

@@ -1,11 +1,29 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
 export const GlobalContext = createContext();
 
 const Context = ({children}) => {
     const [items,setItems] = useState([]);
+    const [data,setData] = useState([]);
+    const [newItems,setNewItems] = useState([]);
+    const [loading,setLoading] = useState(false);
     const [total,setTotal] = useState(0);
 
+
+    useEffect(() => {
+        Fetch();
+    },[])
+
+    const Fetch = async () => {
+        setLoading(true);
+        const res = await fetch("https://dummyjson.com/products");
+        const data = await res.json();
+        if (!data.error) {
+            setLoading(false);
+        }
+        setData(data.products);
+        console.log(data.products)
+    }
 
     const addItems = (newitems,p)=>{ 
         let val =  items[newitems] ;
@@ -29,9 +47,17 @@ const Context = ({children}) => {
         setTotal(0)
     }
 
+    
+
+    const filterItems = (query)=>{
+        setNewItems(data.filter(item => item.title.toLowerCase().includes(query.toLowerCase())))
+    }
+
+    console.log(newItems)
+
 
   return (
-    <GlobalContext.Provider value={{addItems,deleteItems,deleteAll,items,total}}>{children}</GlobalContext.Provider>
+    <GlobalContext.Provider value={{addItems,deleteItems,deleteAll,items,total,data,loading,filterItems,newItems}}>{children}</GlobalContext.Provider>
   )
 }
 

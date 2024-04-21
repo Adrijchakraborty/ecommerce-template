@@ -1,8 +1,8 @@
 import React from 'react'
-import { Page } from './Page'
-import Header from './Header'
 import { Route, Routes } from 'react-router-dom'
-import Cart from './Cart'
+import { Page } from './components/Page'
+import Cart from './components/Cart'
+import Header from './components/Header'
 
 const App = () => {
   return (

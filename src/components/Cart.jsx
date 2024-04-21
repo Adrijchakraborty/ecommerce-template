@@ -1,22 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { GlobalContext } from './context/Context'
+import { GlobalContext } from '../context/Context'
 
 const Cart = () => {
-    const { total, items, addItems, deleteItems, deleteAll } = useContext(GlobalContext);
+    const { total, items, addItems, deleteItems, deleteAll ,data} = useContext(GlobalContext);
 
-    const [data, setData] = useState()
-
-    useEffect(() => {
-        callApi();
-    }, [])
-
-    const callApi = async () => {
-        const res = await fetch("https://dummyjson.com/products");
-        const data = await res.json();
-
-        setData(data.products)
-    }
-    // console.log(data)
     return (
         <div>
             {data !== undefined && data.map(products => {
@@ -31,7 +18,7 @@ const Cart = () => {
                     </div>
                 }
             })}
-            {total == 0 ? <p className='text-center font-serif'>Your cart is empty</p> : <div className='mt-5 p-3'>Total is <p className='text-red-700'>${total}</p><button className='uppercase bg-red-600 p-2 rounded-lg hover:opacity-80 mt-5' onClick={() => deleteAll()}>delete all</button></div>}
+            {total == 0 ? <p className='text-center font-serif'>Your cart is empty</p> : <div className='mt-5 p-3'>Total is <p className='font-semibold'>${total}</p><button className='uppercase bg-red-600 p-2 rounded-lg hover:opacity-80 mt-5' onClick={() => deleteAll()}>delete all</button></div>}
         </div>
     );
 };

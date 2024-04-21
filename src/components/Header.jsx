@@ -16,7 +16,7 @@ const Header = () => {
       <div><h1>Ecommerce</h1></div>
       </Link>
         
-        <div className='flex items-center gap-2'><input onChange={handleChange} type="text" placeholder='search' className='px-3 py-2 border rounded-lg'/><FaSearch/></div>
+        <div className='flex items-center gap-2'><input onChange={handleChange} type="text" placeholder='search' className='px-3 py-2 border rounded-lg w-20 sm:w-full'/><FaSearch/></div>
         <div className='flex gap-3'>
             <Link to={'/'}>Home</Link>
             <Link to={'/cart'}>Cart</Link>

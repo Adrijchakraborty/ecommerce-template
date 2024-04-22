@@ -5,7 +5,7 @@ export const Page = () => {
     const [page, setPage] = useState(1)
     const [current, setCurrent] = useState(9)
 
-    const {items,addItems,data,newItems,loading} = useContext(GlobalContext);
+    const {items,addItems,data,newItems,loading,search} = useContext(GlobalContext);
 
     const lastPage = current * page;
     const firstPage = lastPage - current;
@@ -25,8 +25,8 @@ export const Page = () => {
                 <span className="loading loading-spinner loading-lg"></span>
                 :
                 <div>
-                    <div className='flex flex-wrap justify-center'>
-                        {newData.map((item) => {
+                    <div className='flex flex-wrap justify-center min-h-screen'>
+                        {(search.length>0 && newItems.length===0) ? <p className='text-center'>No result found</p> : newData.map((item) => {
                             return (
                                 <div key={item.id} className='flex flex-col items-center justify-center gap-2 border-2 border-slate-800 m-2 max-w-md w-full sm:w-1/2 md:w-1/3 lg:w-1/4 py-3'>
                                     <img src={item.images[0]} alt="" className='h-full w-full border-2' />

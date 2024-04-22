@@ -8,6 +8,8 @@ const Context = ({children}) => {
     const [newItems,setNewItems] = useState([]);
     const [loading,setLoading] = useState(false);
     const [total,setTotal] = useState(0);
+    const [count,setCount] = useState(0);
+    const [search,setSearch] = useState("");
 
 
     useEffect(() => {
@@ -33,13 +35,15 @@ const Context = ({children}) => {
         }else{
             setItems({...items,[newitems] : val+1});
         }
-        setTotal(total+p)
-        // console.log(val,p)
+        setTotal((prev)=>(prev+p));
+        setCount((prev)=>(prev+1));
     }
+    // console.log(count);
     const deleteItems = (newitems,p)=>{ 
         let val =  items[newitems] ;
         setItems({...items,[newitems] : val-1});
-        setTotal(total-p)
+        setTotal((prev)=>prev-p);
+        setCount((prev)=>(prev-1));
     }
 
     const deleteAll = ()=>{
@@ -50,14 +54,15 @@ const Context = ({children}) => {
     
 
     const filterItems = (query)=>{
-        setNewItems(data.filter(item => item.title.toLowerCase().includes(query.toLowerCase())))
+        setNewItems(data.filter(item => item.title.toLowerCase().includes(query.toLowerCase())));
+        setSearch(query);
     }
 
-    console.log(newItems)
+    // console.log(newItems)
 
 
   return (
-    <GlobalContext.Provider value={{addItems,deleteItems,deleteAll,items,total,data,loading,filterItems,newItems}}>{children}</GlobalContext.Provider>
+    <GlobalContext.Provider value={{addItems,deleteItems,deleteAll,items,total,data,loading,filterItems,newItems,search,count}}>{children}</GlobalContext.Provider>
   )
 }
 

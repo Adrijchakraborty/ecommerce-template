@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../context/Context'
+import { Link } from 'react-router-dom'
 
 export const Page = () => {
     const [page, setPage] = useState(1)
@@ -29,7 +30,9 @@ export const Page = () => {
                         {(search.length>0 && newItems.length===0) ? <p className='text-center'>No result found</p> : newData.map((item) => {
                             return (
                                 <div key={item.id} className='flex flex-col items-center justify-center gap-2 border-2 border-slate-800 m-2 max-w-md w-full sm:w-1/2 md:w-1/3 lg:w-1/4 py-3'>
+                                    <Link to={`/details/${item.id}`}>
                                     <img src={item.images[0]} alt="" className='h-full w-full border-2' />
+                                    </Link>
                                     <p>{item.title}</p>
                                     <div className='flex w-full items-center justify-around'>
                                         <p>Price:${item.price}</p>

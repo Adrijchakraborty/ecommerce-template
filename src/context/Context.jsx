@@ -24,7 +24,7 @@ const Context = ({children}) => {
             setLoading(false);
         }
         setData(data.products);
-        console.log(data.products)
+        // console.log(data.products)
     }
 
     const addItems = (newitems,p)=>{ 

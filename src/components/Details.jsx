@@ -31,7 +31,7 @@ const Details = () => {
             {item === undefined && <span className="loading loading-spinner loading-xs"></span>}
             {item !== undefined &&
                 <div className='sm:flex gap-3 p-5'>
-                    <div className='flex items-center flex-1'>
+                    <div className='flex items-center justify-center flex-1'>
                         <Display image={item[0].images}/>
                     </div>
                     <div className='my-8 flex-1 px-8 sm:px-16'><p className='text-3xl font-semibold text-center mb-8'>{item[0].title}</p><p>{item[0].description}</p>

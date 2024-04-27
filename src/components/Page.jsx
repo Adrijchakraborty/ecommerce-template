@@ -45,8 +45,8 @@ export const Page = () => {
 
                     </div>
                     <div className='flex justify-between p-4 '>
-                        <a href='#' className='uppercase text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700' disabled={page === 1} onClick={() => setPage(page - 1)}>prev</a>
-                        <a href='#' className='uppercase text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700' disabled={page === Math.round(data.length / 8)} onClick={() => setPage(page + 1)}>next</a>
+                        <button className='uppercase text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700' disabled={page === 1} onClick={() => setPage(page - 1)}>prev</button>
+                        <button className='uppercase text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700' disabled={page === Math.round(data.length / 8)} onClick={() => setPage(page + 1)}>next</button>
 
                     </div>
 
